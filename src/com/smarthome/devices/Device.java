@@ -8,6 +8,46 @@ package com.smarthome.devices;
  *
  * @author ROG
  */
-public class Device {
+abstract public class Device {
+    protected String name;
+    protected boolean isOn;
     
+    public Device(String name)
+    {
+        this.name = name;
+        isOn = false;
+    }
+    
+    public void turnOn()
+    {
+        if(isOn)
+        {
+            System.out.println(name+ " is already on.");
+        }
+        else
+        {
+            this.isOn = true;
+            System.out.println(name+ " is switched on.");
+        }
+    }
+    
+    public void turnOff()
+    {
+        if(!isOn)
+        {
+            System.out.println(name+ " is already off.");
+        }
+        else
+        {
+            this.isOn = false;
+            System.out.println(name+ " is switched off.");
+        }
+    }
+    
+    public boolean getStatus()
+    {
+        return isOn;
+    }
+    
+    abstract public void displayStatus();
 }

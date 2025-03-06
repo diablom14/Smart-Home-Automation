@@ -8,6 +8,31 @@ package com.smarthome.devices;
  *
  * @author ROG
  */
-public class Light {
+public class Light extends Device {
     
+    private int brightness;
+    public Light(String name)
+    {
+        super(name);
+        this.brightness = 50;
+    }
+    
+    public void setBrightness(int level) {
+        if (isOn) {
+            brightness = level;
+            System.out.println(name + " brightness set to " + level);
+        } else {
+            System.out.println(name + " is OFF. Turn it ON to adjust brightness.");
+        }
+    }
+
+    public int getBrightness() {
+        return brightness;
+    }
+    
+    @Override
+    public void displayStatus()
+    {
+        System.out.println(name + " - Status: " + (isOn ? "ON" : "OFF") + ", Brightness: " + brightness);
+    }
 }
