@@ -44,6 +44,14 @@ public class AC extends Device {
         }
     }
     
+    @Override
+    public void update(Object data) {
+        if (data instanceof Integer) { // Temperature sensor update
+            int newTemperature = (Integer) data;
+            setTemperature(newTemperature);
+        }
+}
+
 
     @Override
     public void displayStatus() {

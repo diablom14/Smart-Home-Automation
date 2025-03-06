@@ -50,4 +50,5 @@ abstract public class Device {
     }
     
     abstract public void displayStatus();
+    abstract public void update(Object obj);
 }

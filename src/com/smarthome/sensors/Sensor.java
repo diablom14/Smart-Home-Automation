@@ -4,10 +4,14 @@
  */
 package com.smarthome.sensors;
 
+import com.smarthome.devices.Device;
+
 /**
  *
  * @author ROG
  */
-public class Sensor {
-    
+public interface Sensor {
+    void addObserver(Device device);
+    void removeObserver(Device device);
+    void notifyObservers(Object obj);
 }

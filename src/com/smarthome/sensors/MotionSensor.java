@@ -4,10 +4,34 @@
  */
 package com.smarthome.sensors;
 
+import com.smarthome.devices.Device;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ROG
  */
-public class MotionSensor {
+public class MotionSensor implements Sensor {
+    private List <Device> observers;
+    public MotionSensor()
+    {
+        this.observers = new ArrayList();
+    }
     
+    public void addObserver(Device d)
+    {
+        observers.add(d);
+    }
+    public void removeObserver(Device d)
+    {
+        observers.remove(d);
+    }
+    public void notifyObservers(Object obj)
+    {
+        for(Device device : observers)
+        {
+            device.update(obj);
+        }
+    }
 }

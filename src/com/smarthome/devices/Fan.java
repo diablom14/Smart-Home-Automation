@@ -30,6 +30,16 @@ public class Fan extends Device {
     }
     
     @Override
+    public void update(Object data) {
+        if (data instanceof Boolean) { // Motion sensor update
+            boolean motionDetected = (Boolean) data;
+            if (!motionDetected) {
+                turnOff();
+            }
+        }
+    }
+
+    @Override
     public void displayStatus() {
         System.out.println(name + " - Status: " + (isOn ? "ON" : "OFF") + ", Speed: " + speed);
     }
