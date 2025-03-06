@@ -9,3 +9,9 @@
 # Ignore IDE-specific files
 nbactions.xml
 nb-configuration.xml
+
+# Ignore NetBeans project files
+/nbproject/
+/nbproject/private/
+build.xml
+manifest.mf
