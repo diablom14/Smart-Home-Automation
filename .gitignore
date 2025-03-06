@@ -1,0 +1,11 @@
+# Ignore compiled files
+*.class
+
+# Ignore NetBeans build folders
+/build/
+/dist/
+/nbproject/private/
+
+# Ignore IDE-specific files
+nbactions.xml
+nb-configuration.xml
