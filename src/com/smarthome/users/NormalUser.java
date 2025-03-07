@@ -8,6 +8,10 @@ package com.smarthome.users;
  *
  * @author ROG
  */
-public class NormalUser {
+public class NormalUser extends User{
+    public NormalUser(String name)
+    {
+        super(name, "Normal");
+    }
     
 }

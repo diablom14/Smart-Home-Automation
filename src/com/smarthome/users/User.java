@@ -8,6 +8,21 @@ package com.smarthome.users;
  *
  * @author ROG
  */
-public class User {
+abstract public class User {
+    protected String name;
+    protected String role;
     
+    public User(String name, String role)
+    {
+        this.name = name;
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }
