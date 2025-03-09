@@ -38,6 +38,38 @@ public class Light extends Device {
                 turnOff();
             }
         }
+        if (data instanceof String) {   // Time sensor update
+            String timeEvent = (String) data;
+            if(timeEvent.equals("MORNING")) {
+                if(isOn){
+                    isOn = false;
+                    System.out.println("Light is turned off in morning time.");
+                }
+            }
+            else if(timeEvent.equals("AFTERNOON")) {
+                if(isOn){
+                    isOn = false;
+                    System.out.println("Light is turned off in afternoon time.");
+                }
+                
+            }
+            else if(timeEvent.equals("EVENING")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Light is turned on in evening time.");
+                }
+                
+            }
+            else if(timeEvent.equals("NIGHT")) {
+                if(isOn){
+                    isOn = false;
+                    System.out.println("Light is turned off in night time.");
+                }
+            }
+            else{
+               System.out.println("Invalid time event."); 
+            }
+        }
     }
 
     @Override
