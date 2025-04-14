@@ -4,8 +4,12 @@
  */
 package com.smarthome;
 
+import com.smarthome.devices.Device;
 import com.smarthome.rooms.Room;
+import com.smarthome.sensors.Sensor;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,24 +19,83 @@ import java.util.Map;
 public class SmartHomeManager {
     private static SmartHomeManager instance;
     private Map<String, Room> rooms;
+    private List<Sensor> globalSensors;
     
-    private SmartHomeManager()
-    {
+    private SmartHomeManager() {
         rooms = new HashMap<>();
+        globalSensors = new ArrayList<>();
     }
     
-    public static SmartHomeManager getInstance()
-    {
-        if(instance==null)
-        {
+    public static SmartHomeManager getInstance() {
+        if (instance == null) {
             instance = new SmartHomeManager();
         }
         return instance;
     }
     
-    public void addRoom(String roomName)
-    {
+    public void addRoom(String roomName) {
         Room room = new Room(roomName);
+        rooms.put(roomName, room);
+    }
+    
+    public void removeRoom(String roomName) {
+        Room room = rooms.get(roomName);
+        if (room == null) {
+            System.out.println("There is no such room");
+            return;
+        }
+        rooms.remove(roomName);
+    }
+    
+    public void addDeviceToRoom(String roomName, Device device) {
+        Room room = rooms.get(roomName);
+        if (room == null) {
+            System.out.println("Room does not exist.");
+            return;
+        }
+        room.addDevice(device);
+    }
+    
+    public void removeDeviceFromRoom(String roomName, String deviceName) {
+        Room room = rooms.get(roomName);
+        if (room == null) {
+            System.out.println("Room does not exist.");
+            return;
+        }
+
+        room.removeDevice(deviceName);
         
+        // Remove room if no devices are left
+        if (room.getDevices().isEmpty()) {
+            rooms.remove(roomName);
+            System.out.println("Room " + roomName + " removed as no devices are left.");
+        }
+    }
+    
+    public void addSensorToRoom(String roomName, Sensor sensor) {
+        Room room = rooms.get(roomName);
+        if (room == null) {
+            System.out.println("Room does not exist.");
+            return;
+        }
+        room.addSensor(sensor);
+    }
+    
+    public void removeSensorFromRoom(String roomName, Sensor sensor) {
+        Room room = rooms.get(roomName);
+        if (room == null) {
+            System.out.println("Room does not exist.");
+            return;
+        }
+        room.removeSensor(sensor);
+    }
+    
+    public void addGlobalSensor(Sensor sensor) {
+        globalSensors.add(sensor);
+    }
+    
+    public void removeGlobalSensor(Sensor sensor) {
+        globalSensors.remove(sensor);
     }
 }
+
