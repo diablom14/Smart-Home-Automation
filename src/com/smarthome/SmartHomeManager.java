@@ -97,5 +97,17 @@ public class SmartHomeManager {
     public void removeGlobalSensor(Sensor sensor) {
         globalSensors.remove(sensor);
     }
+    
+    public void updateSmartHomeManager(Object obj) {
+        if(obj instanceof String){
+            String event = (String) obj;
+            if(event.equals("UPPERLIMIT")){
+                System.out.println("Water has reached the upper limit of the tank. Switch off the motor. Pani ki tanki bhar gayi h kripya motor bandh kare.");
+            }
+            else if(event.equals("LOWERLIMIT")){
+                System.out.println("Water has reached the lower limit of the tank. Switch on the motor.");
+            }
+        }
+    }
 }
 

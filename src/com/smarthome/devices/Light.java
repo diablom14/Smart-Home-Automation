@@ -39,31 +39,43 @@ public class Light extends Device {
             }
         }
         if (data instanceof String) {   // Time sensor update
-            String timeEvent = (String) data;
-            if(timeEvent.equals("MORNING")) {
+            String event = (String) data;
+            if(event.equals("MORNING")) {
                 if(isOn){
                     isOn = false;
                     System.out.println("Light is turned off in morning time.");
                 }
             }
-            else if(timeEvent.equals("AFTERNOON")) {
+            else if(event.equals("AFTERNOON")) {
                 if(isOn){
                     isOn = false;
                     System.out.println("Light is turned off in afternoon time.");
                 }
                 
             }
-            else if(timeEvent.equals("EVENING")) {
+            else if(event.equals("EVENING")) {
                 if(!isOn){
                     isOn = true;
                     System.out.println("Light is turned on in evening time.");
                 }
                 
             }
-            else if(timeEvent.equals("NIGHT")) {
+            else if(event.equals("NIGHT")) {
                 if(isOn){
                     isOn = false;
                     System.out.println("Light is turned off in night time.");
+                }
+            }
+            else if(event.equals("ENTRY")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Welcome, lights are turned on for you.");
+                }
+            }
+            else if(event.equals("NOMOTION")) {
+                if(isOn){
+                    isOn = false;
+                    System.out.println("Room empty, turning off the light.");
                 }
             }
             else{

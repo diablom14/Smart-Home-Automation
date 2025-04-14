@@ -34,4 +34,7 @@ public class MotionSensor implements Sensor {
             device.update(obj);
         }
     }
+    public void motionDetected(String motion){
+        notifyObservers(motion);
+    }
 }
