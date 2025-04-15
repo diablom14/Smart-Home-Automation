@@ -101,4 +101,10 @@ public class AC extends Device {
     public void displayStatus() {
         System.out.println(name + " - Status: " + (isOn ? "ON" : "OFF") + ", Temp: " + temperature + "°C, Mode: " + mode);
     }
+    
+    @Override
+    public void toggleState() {
+        isOn = !isOn;
+        System.out.println("AC " + name + " is now " + (isOn ? "ON" : "OFF"));
+    }
 }

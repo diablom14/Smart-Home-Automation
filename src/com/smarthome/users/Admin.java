@@ -4,6 +4,9 @@
  */
 package com.smarthome.users;
 
+import com.smarthome.SmartHomeManager;
+import com.smarthome.devices.Device;
+
 /**
  *
  * @author ROG
@@ -25,5 +28,24 @@ public class Admin extends User {
         {
             System.out.println("Invalid Role");
         }
+    }
+    public void addRoom(String roomName) {
+        SmartHomeManager.getInstance().addRoom(roomName);
+        System.out.println("Room added: " + roomName);
+    }
+
+    public void removeRoom(String roomName) {
+        SmartHomeManager.getInstance().removeRoom(roomName);
+        System.out.println("Room removed: " + roomName);
+    }
+
+    public void addDeviceToRoom(String roomName, Device device) {
+        SmartHomeManager.getInstance().addDeviceToRoom(roomName, device);
+        System.out.println("Device added to " + roomName + ": " + device.getName());
+    }
+
+    public void removeDeviceFromRoom(String roomName, String deviceName) {
+        SmartHomeManager.getInstance().removeDeviceFromRoom(roomName, deviceName);
+        System.out.println("Device removed from " + roomName + ": " + deviceName);
     }
 }

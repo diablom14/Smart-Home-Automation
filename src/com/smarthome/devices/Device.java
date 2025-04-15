@@ -17,7 +17,10 @@ abstract public class Device {
         this.name = name;
         isOn = false;
     }
-    
+    public String getName()
+    {
+        return this.name;
+    }
     public void turnOn()
     {
         if(isOn)
@@ -51,4 +54,5 @@ abstract public class Device {
     
     abstract public void displayStatus();
     abstract public void update(Object obj);
+    abstract public void toggleState();
 }

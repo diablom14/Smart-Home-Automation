@@ -86,4 +86,10 @@ public class Fan extends Device {
     public void displayStatus() {
         System.out.println(name + " - Status: " + (isOn ? "ON" : "OFF") + ", Speed: " + speed);
     }
+    
+    @Override
+    public void toggleState() {
+        isOn = !isOn;
+        System.out.println("Fan " + name + " is now " + (isOn ? "ON" : "OFF"));
+    }
 }
