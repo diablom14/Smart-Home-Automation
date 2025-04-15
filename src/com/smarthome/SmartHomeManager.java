@@ -49,7 +49,16 @@ public class SmartHomeManager {
         }
         rooms.remove(roomName);
     }
-    
+    public void listRooms() {
+        if (rooms.isEmpty()) {
+            System.out.println("No rooms available in the system.");
+        } else {
+            System.out.println("List of rooms:");
+            for (String roomName : rooms.keySet()) {
+                System.out.println("Room Name: " + roomName);
+            }
+        }
+    }
     public void addDeviceToRoom(String roomName, Device device) {
         Room room = rooms.get(roomName);
         if (room == null) {
