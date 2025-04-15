@@ -37,7 +37,10 @@ public class SmartHomeManager {
         Room room = new Room(roomName);
         rooms.put(roomName, room);
     }
-    
+    public Room getRoom(String roomName) {
+        return rooms.get(roomName);
+    }
+
     public void removeRoom(String roomName) {
         Room room = rooms.get(roomName);
         if (room == null) {

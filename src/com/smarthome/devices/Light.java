@@ -45,4 +45,10 @@ public class Light extends Device {
     {
         System.out.println(name + " - Status: " + (isOn ? "ON" : "OFF") + ", Brightness: " + brightness);
     }
+    
+    @Override
+    public void toggleState() {
+        isOn = !isOn;
+        System.out.println("Light " + name + " is now " + (isOn ? "ON" : "OFF"));
+    }
 }
