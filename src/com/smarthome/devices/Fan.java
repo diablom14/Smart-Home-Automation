@@ -37,6 +37,49 @@ public class Fan extends Device {
                 turnOff();
             }
         }
+        if (data instanceof String) {   // Time sensor update
+            String event = (String) data;
+            if(event.equals("MORNING")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Fan is turned on in morning time.");
+                }
+            }
+            else if(event.equals("AFTERNOON")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Fan is turned on in afternoon time.");
+                }
+                
+            }
+            else if(event.equals("EVENING")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Fan is turned on in evening time.");
+                }
+                
+            }
+            else if(event.equals("NIGHT")) {
+                if(isOn){
+                    isOn = false;
+                    System.out.println("Fan is turned on in night time.");
+                }
+            }
+            else if(event.equals("ENTRY")) {
+                if(!isOn){
+                    isOn = true;
+                    System.out.println("Welcome, turning on the fan for you.");
+                }
+            }
+            else if(event.equals("NOMOTION")) {
+                if(isOn){
+                    System.out.println("Room empty, turning off the fan.");
+                }
+            }
+            else{
+               System.out.println("Invalid time event."); 
+            }
+        }
     }
 
     @Override
