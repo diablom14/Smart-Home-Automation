@@ -55,4 +55,6 @@ abstract public class Device {
     abstract public void displayStatus();
     abstract public void update(Object obj);
     abstract public void toggleState();
+    abstract public String saveState();
+    abstract public void loadState(String state);
 }

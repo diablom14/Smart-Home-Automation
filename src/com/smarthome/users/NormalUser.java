@@ -17,28 +17,6 @@ public class NormalUser extends User{
     {
         super(name, "Normal");
     }
-    public void controlDevice(String roomName, String deviceName, String action) {
-        SmartHomeManager manager = SmartHomeManager.getInstance();
-        Room room = manager.getRoom(roomName);
-
-        if (room == null) {
-            System.out.println("Room not found.");
-            return;
-        }
-
-        for (Device device : room.getDevices()) {
-            if (device.getName().equalsIgnoreCase(deviceName)) {
-                switch (action.toLowerCase()) {
-                    case "on" -> device.turnOn();
-                    case "off" -> device.turnOff();
-                    case "toggle" -> device.toggleState();
-                    default -> System.out.println("Unknown action. Use on/off/toggle.");
-                }
-                return;
-            }
-        }
-
-        System.out.println("Device not found in the specified room.");
-    }
+    
     
 }

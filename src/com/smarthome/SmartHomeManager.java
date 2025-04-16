@@ -121,5 +121,16 @@ public class SmartHomeManager {
             }
         }
     }
+    
+    public void saveState() {
+        for (Room room : rooms.values()) {
+            room.saveState();
+        }
+    }
+
+    public void loadState() {
+        // Load state logic (stub)
+        System.out.println("Loading room and device states...");
+    }
 }
 

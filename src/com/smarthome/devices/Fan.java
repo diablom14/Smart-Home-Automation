@@ -92,4 +92,21 @@ public class Fan extends Device {
         isOn = !isOn;
         System.out.println("Fan " + name + " is now " + (isOn ? "ON" : "OFF"));
     }
+    @Override
+    public String saveState() {
+        return "speed=" + speed + ";status=" + (isOn ? "on" : "off");
+    }
+
+    @Override
+    public void loadState(String state) {
+        String[] parts = state.split(";");
+        for (String part : parts) {
+            String[] keyValue = part.split("=");
+            if (keyValue[0].equals("speed")) {
+                this.speed = Integer.parseInt(keyValue[1]);
+            } else if (keyValue[0].equals("status")) {
+                this.isOn = keyValue[1].equals("on");
+            }
+        }
+    }
 }

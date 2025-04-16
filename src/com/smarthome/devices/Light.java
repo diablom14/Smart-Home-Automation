@@ -95,4 +95,21 @@ public class Light extends Device {
         isOn = !isOn;
         System.out.println("Light " + name + " is now " + (isOn ? "ON" : "OFF"));
     }
+    @Override
+    public String saveState() {
+        return "brightness=" + brightness + ";status=" + (isOn ? "on" : "off");
+    }
+
+    @Override
+    public void loadState(String state) {
+        String[] parts = state.split(";");
+        for (String part : parts) {
+            String[] keyValue = part.split("=");
+            if (keyValue[0].equals("brightness")) {
+                this.brightness = Integer.parseInt(keyValue[1]);
+            } else if (keyValue[0].equals("status")) {
+                this.isOn = keyValue[1].equals("on");
+            }
+        }
+    }
 }

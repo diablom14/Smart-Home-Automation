@@ -20,15 +20,24 @@ public class Room {
         this.devices = new ArrayList<>();
         this.sensors = new ArrayList<>();  // Initialize sensor list
     }
-
+    
+    public String getName()
+    {
+        return this.roomName;
+    }
     // Add a device to the room
     public void addDevice(Device d) {
         this.devices.add(d);
     }
-
+    
     // Remove a device from the room by name
     public void removeDevice(String deviceName) {
         devices.removeIf(device -> device.getName() != null && device.getName().equals(deviceName));
+    }
+    public void saveState() {
+        for (Device device : devices) {
+            device.saveState();
+        }
     }
 
     // Get the list of devices in the room
